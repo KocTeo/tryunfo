@@ -12,6 +12,7 @@ class Form extends Component {
           Nome da carta:
           <input
             type="text"
+            name="name"
             value={ cardName }
             onChange={ onInputChange }
             data-testid="name-input"
@@ -21,6 +22,7 @@ class Form extends Component {
           Descrição:
           <textarea
             type="text"
+            name="description"
             value={ cardDescription }
             onChange={ onInputChange }
             data-testid="description-input"
@@ -30,6 +32,7 @@ class Form extends Component {
           Primeiro Atributo:
           <input
             type="number"
+            name="attr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
             data-testid="attr1-input"
@@ -39,6 +42,7 @@ class Form extends Component {
           Segundo Atributo:
           <input
             type="number"
+            name="attr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
             data-testid="attr2-input"
@@ -48,6 +52,7 @@ class Form extends Component {
           Terceiro Atributo:
           <input
             type="number"
+            name="attr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
             data-testid="attr3-input"
@@ -57,6 +62,7 @@ class Form extends Component {
           Imagem:
           <input
             type="text"
+            name="image"
             value={ cardImage }
             onChange={ onInputChange }
             data-testid="image-input"
@@ -64,6 +70,7 @@ class Form extends Component {
         </label>
         <select
           value={ cardRare }
+          name="rare"
           onChange={ onInputChange }
           data-testid="rare-input"
         >
@@ -76,6 +83,7 @@ class Form extends Component {
           Super Trunfo:
           <input
             type="checkbox"
+            name="trunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
             data-testid="trunfo-input"
