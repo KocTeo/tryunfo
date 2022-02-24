@@ -31,9 +31,9 @@ class App extends React.Component {
       name: '',
       description: '',
       image: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
       rare: 'normal',
       trunfo: false,
     });
