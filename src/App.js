@@ -15,6 +15,8 @@ class App extends React.Component {
       attr3: '',
       rare: 'normal',
       trunfo: false,
+      deck: [],
+      hasTrunfo: false,
     };
   }
 
@@ -26,7 +28,13 @@ class App extends React.Component {
     });
   }
 
-  handleSave = () => {
+  handleSave = (event) => {
+    event.preventDefault();
+    const { state } = this;
+    this.setState((prevState) => ({
+      deck: [...prevState.deck, state],
+    }), this.checkSuperTrunfo);
+
     this.setState({
       name: '',
       description: '',
@@ -37,6 +45,15 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
     });
+  }
+
+  checkSuperTrunfo = () => {
+    const { deck } = this.state;
+    if (deck.some((card) => card.trunfo)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   handleSaveButton = () => {
@@ -70,7 +87,7 @@ class App extends React.Component {
 
   render() {
     const { name, description, image, attr1,
-      attr2, attr3, rare, trunfo } = this.state;
+      attr2, attr3, rare, trunfo, deck, hasTrunfo } = this.state;
 
     return (
       <div>
@@ -86,6 +103,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ this.handleSaveButton() }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.handleSave }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ name }
@@ -97,6 +115,27 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+        { deck.map((card, index) => (
+          <section key={ index }>
+            Cartas:
+            <Card
+              cardName={ card.name }
+              cardDescription={ card.description }
+              cardAttr1={ card.attr1 }
+              cardAttr2={ card.attr2 }
+              cardAttr3={ card.attr3 }
+              cardImage={ card.image }
+              cardRare={ card.rare }
+              cardTrunfo={ card.trunfo }
+            />
+            <button
+              type="button"
+              data-testid="delete-button"
+            >
+              Excluir
+            </button>
+          </section>
+        ))}
       </div>
     );
   }
