@@ -85,6 +85,21 @@ class App extends React.Component {
     return false;
   }
 
+  removeCard = ({ target }) => {
+    const { deck } = this.state;
+    target.previousSibling.remove();
+    target.remove();
+    if (deck.some((card) => card.hasTrunfo === true)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    } else {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+  }
+
   render() {
     const { name, description, image, attr1,
       attr2, attr3, rare, trunfo, deck, hasTrunfo } = this.state;
@@ -115,9 +130,9 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+        <h2>Deck:</h2>
         { deck.map((card, index) => (
           <section key={ index }>
-            Cartas:
             <Card
               cardName={ card.name }
               cardDescription={ card.description }
@@ -131,6 +146,7 @@ class App extends React.Component {
             <button
               type="button"
               data-testid="delete-button"
+              onClick={ this.removeCard }
             >
               Excluir
             </button>
