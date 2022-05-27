@@ -83,6 +83,7 @@ class Form extends Component {
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : (
             <label htmlFor="trunfo-input">
+              Super Trunfo
               <input
                 type="checkbox"
                 name="trunfo"

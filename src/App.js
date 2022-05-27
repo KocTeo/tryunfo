@@ -47,15 +47,6 @@ class App extends React.Component {
     });
   }
 
-  checkSuperTrunfo = () => {
-    const { deck } = this.state;
-    if (deck.some((card) => card.trunfo)) {
-      this.setState({
-        hasTrunfo: true,
-      });
-    }
-  }
-
   handleSaveButton = () => {
     const { name, description, image, attr1, attr2, attr3 } = this.state;
     const max = 90;
@@ -83,6 +74,15 @@ class App extends React.Component {
       return true;
     }
     return false;
+  }
+
+  checkSuperTrunfo = () => {
+    const { deck } = this.state;
+    if (deck.some((card) => card.trunfo)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   removeCard = ({ target }) => {
